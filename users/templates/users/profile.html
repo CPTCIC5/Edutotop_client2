@@ -1,0 +1,223 @@
+{% extends "navbar.html" %}
+{% block title %} Edutotop-Profile {% endblock title %}
+{% load static %}
+{% block script %}  <link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock script %}
+{% block body%}
+
+  <section class="home-section">
+    <div class="Profile-main-div">
+      <div class="profile-div">
+        <div class="top-profile">
+          {% for qset in queryset %}
+          {% if qset.image %}
+          <img src="{{qset.image.url}}" alt="profile" class="circle-profile">
+          {% else %}
+          <img src="/Data/default.jpeg" alt="profile" class="circle-profile">
+          {% endif %}
+          <div class="user-bio">
+            <h3 class="username">{{qset.user}}</h3>
+            <p class="bio">{{qset.about}}</p>
+            <div class="follow-div">
+              <p class="followers">Followers <br> {{qset.follower}}</p>
+              <p class="following">Following <br> {{qset.following}}</p>
+            </div>
+          {% endfor %} 
+
+          </div>
+          <div class="follow">
+            <button>Follow</button>
+          </div>
+        
+  
+        </div>
+      </div>
+  <div class="tabs">
+    <h5 class="links_name active"><span class="note active" >Notes</span></h5>
+    <h5 class="links_name"><span class="video" >Courses</span></h5>        
+</div>
+
+<div id="notes" class="card-notes">
+<div class="card-div">
+
+  {% for qset2 in user.notes_set.all %}
+  <div class="card">
+    {% if qset2.thumbnail %}
+    <img src="{{qset2.thumbnail.url}}" alt="" class="thumbnail">
+    {% else %}
+     <img src="/Data/default_notes.jpeg" alt="" class="thumbnail">
+    {% endif %}
+    <div class="card-body">  
+      {% if qset2.profile.image %}
+      <img src="{{qset2.profile.image.url}}" alt="author" class="circle">
+      {% else %}
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+      {% endif %}
+     <h5 class="title">{{qset2.title}}</h5>
+    </div>
+     <p class="name">{{qset2.author}}</p>
+   </div>
+  {% endfor %}
+</div>
+</div>
+
+<div id="videos" class="hide">
+<div class="card-div">
+  <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">we are note here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">we are note here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">we are note here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">we are note here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+</div>
+<div class="card-div">
+  <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">we are note here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">We are here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">We are here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">We are here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+</div>
+<div class="card-div">
+  <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">We are here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">We are here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">We are here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+   <div class="card">
+     <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+    <div class="card-body">
+     
+     <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+     <h5 class="title">We are here</h5>
+   </div>
+     <p class="name">Prem shahi</p>
+     <p class="views-time">129k - 1 day ago</p> 
+   
+
+   </div>
+</div>
+</div>
+      
+
+    </div>
+  </section>
+
+  <script src="{% static 'js/profile.js' %}"></script>
+  <script src="{% static 'js/tab.js' %}"></script>
+
+{% endblock body%}

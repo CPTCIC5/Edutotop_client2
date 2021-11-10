@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}  {% endblock title %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block script %}  {% endblock script %}
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus icon'></i>
+      <div class="logo_name">CodingLab</div>
+      <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <i class='bx bx-search'></i>
+        <input type="text" placeholder="Search...">
+        <span class="tooltip">Search</span>
+      </li>
+      <li>
+        <a href="{% url 'home:index' %}">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Home</span>
+        </a>
+        <span class="tooltip">Home</span>
+      </li>
+      <li>
+        <a href="{% url 'users:profile' %}">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
+      <li>
+        <a href="#" class="dropdown-student">
+          <i class='bx bx-book-open'></i>
+          <span class="links_name">Student</span>
+            <i class='bx bxs-up-arrow links_name' id="arrow" style="position:relative;left:4rem;"></i>
+
+         
+        </a>
+        <span class="tooltip">Student</span>
+
+        <li class="dropdown-list dropdownli">
+          <a href="" >
+            <i class='bx bx-book-open'></i>
+            <span class="links_name">Bag</span> 
+            </a>
+        
+          <a href=""  >
+            <i class='fas fa-user-tie'></i>
+            <span class="links_name">Carrier</span> 
+            </a>
+        
+          <a href="">
+            <i class='bx bx-chat'></i>
+            <span class="links_name">Message</span> 
+            </a>
+        </li>
+        
+      </li>
+      <li>
+        <a href="#" class="dropdown-teacher" >
+          <i class='bx bxs-graduation'></i>
+          <span class="links_name ">Teacher</span>
+          <i class='bx bxs-up-arrow links_name' id="arrow-teach" style="position:relative;left:4rem;"></i>
+        </a>
+        <span class="tooltip">Teacher</span>
+
+        <li class="dropdown-list dropdownlist">
+          <a href="#" >
+            <i class='bx bx-video'></i>
+            <span class="links_name">Courses</span> 
+            </a>
+        
+          <a href=""  >
+            <i class='bx bxs-notepad'></i>
+            <span class="links_name">Notes</span> 
+            </a>
+        
+          <a href="">
+            <i class='bx bx-bar-chart-alt-2'></i>
+            <span class="links_name">Analytics</span> 
+            </a>
+            <a href="">
+              <i class='bx bx-chat'></i>
+              <span class="links_name">Message</span> 
+              </a>
+        </li>
+      </li>
+
+
+     
+      <li>
+        <a href="#">
+          <i class='bx bx-cog'></i>
+          <span class="links_name">Setting</span>
+        </a>
+        <span class="tooltip">Setting</span>
+      </li>
+      <li class="profile">
+        <div class="profile-details">
+          <img src="{% static 'images/profile.jpg' %}" alt="profileImg">
+          <div class="name_job">
+            <div class="name">Prem Shahi</div>
+            <div class="job">Web designer</div>
+          </div>
+        </div>
+        <button></button><i class='bx bx-log-out'  id="log_out"><a href="{% url 'users:logout' %}"></a></i></button>
+      </li>
+    </ul>
+  </div>
+  <!---<section class="home-section">
+    <div class="text">Dashboard</div>
+  </section>--->
+
+{% block body %} {% endblock body %}
+</body>
+</html>
