@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0@tkeo_zzyo1x6z4twxb0#dlw2-7mr+ult3@qn79c#axm@ed-6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','edutotop.com','www.edutotop.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,11 +39,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index.apps.IndexConfig',
     'users.apps.UsersConfig',
+    'django_private_chat',
+    'message.apps.MessageConfig',
     'crispy_forms',
     'ckeditor',
     'allauth',
+    'django.contrib.sites',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
 ]
+
+SITE_ID = 2
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -74,6 +83,23 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',    
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 WSGI_APPLICATION = 'Edutotop.wsgi.application'
 
@@ -130,6 +156,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 
+TIME_ZONE = 'Asia/Kolkata'
+
+CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_PORT = 5002
+CHAT_WS_SERVER_PROTOCOL = 'ws'
+
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'Data')
 MEDIA_URL='/Data/'
@@ -146,4 +178,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER ='aryanjainak@gmail.com'
-EMAIL_HOST_PASSWORD ='puspa456'
+EMAIL_HOST_PASSWORD ='Iamreal123'

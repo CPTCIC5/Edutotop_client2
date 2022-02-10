@@ -1,0 +1,438 @@
+{% extends "navbar.html" %}
+{% block title %}  Status | Edutotop {% endblock title %}
+{% load static  %}
+{% block script %}   <link rel="stylesheet" href="{% static 'css/status.css' %}"> {% endblock script %}
+{% block filter %}
+<div id="nav_bar">
+  <div class="nav_buttons">
+    <button id="nav_left" class="tab">
+      <span class="material-icons-outlined">
+        help
+      </span>
+    </button>
+  </div>
+
+  <div class="nav_buttons">
+    <button class="active tab">
+      <span class="material-icons-outlined">
+        youtube_searched_for
+      </span>
+    </button>
+  </div>
+
+  <div class="nav_buttons">
+    <button id="home_tab" class="tab">
+
+      <span class="material-icons-outlined" id="home_icon">
+        home
+      </span>
+
+    </button>
+  </div>
+
+  <div class="nav_buttons">
+    <button class="tab">
+      <span class="material-icons-outlined">
+        local_library
+      </span>
+    </button>
+  </div>
+
+  <div class="nav_buttons" id="menu_tab">
+    <button id="nav_right" class="tab" onclick="toggle_menu()">
+      <span class="material-icons">menu</span>
+    </button>
+  </div>
+</div>
+
+<div id="menu_slot">
+  <div id="menu_holder">
+    <div class="menu_options">
+      <button class="menu_redirects">
+        Help
+      </button>
+    </div>
+    <div class="menu_options">
+      <button class="menu_redirects">
+        Help
+      </button>
+    </div>
+    <div class="menu_options">
+      <button class="menu_redirects">
+        Help
+      </button>
+    </div>
+    <div class="menu_options">
+      <button class="menu_redirects">
+        Help
+      </button>
+    </div>
+    <div class="menu_options">
+      <button class="menu_redirects">
+        Help
+      </button>
+    </div>
+    <div class="menu_options">
+      <button class="menu_redirects">
+        Help
+      </button>
+    </div>
+    <div class="menu_options">
+      <button class="menu_redirects">
+        Help
+      </button>
+    </div>
+    <div class="menu_options">
+      <button class="menu_redirects">
+        over
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock filter %}
+{% block body %}
+
+  <section class="home-section">
+    <div class="main-div">
+      <div class="text">Status</div>
+      <div class="notes-videos">
+        <div class="btns-task">
+          <div class="btns">
+            <i class='bx bx-filter-alt filter-btn'></i>
+          </div>
+          <div class="completed-btn task_active">Completed</div>
+          <div class="pending-btn ">Pending</div>
+        </div>
+      
+      
+        </div>
+    </div>
+    <div class="filter-div hide">
+      <i class="bx bxs-up-arrow filt-arrow"></i>
+      <ul class="filters">
+        <li class="notes-btn tab-active">Notes</li>
+        <li class="videos-btn">Courses</li>
+        <li class="note-videos-btn">Both</li>
+      </ul>
+    </div>
+    
+
+      <!--notes cards-->
+      <div class="notes">
+      <!--Completed Card Started-->
+        <div class="completed-notes">
+          
+          <!-- <div class="video_slip">
+            <div class="video_thumbnail">
+              <img src="thumbnail.jpg" alt="thumbnail">
+            </div>
+            <div class="video_details">
+              <div class="video_title">
+                Hello kya bolte public
+              </div>
+              <div class="video_stats">
+                <span class="video_stats_views">123k views</span>
+                <span class="video_stats_upload_time">2 months ago</span>
+              </div>
+              <div class="video_owner">
+                <div class="video_owner_pic">
+                  <img src="{% static 'images/profile.jpg' %}" alt="profile">
+                </div>
+                <div id="vertical_grid">
+      
+                  <div class="video_owner_name">
+                    TharaBhai Joginder
+                  </div>
+      
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="card-div">
+            <div class="card">
+               <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+              <div class="card-body">
+               <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+             <div class="card-area">
+                <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+                <p class="name">Prem shahi</p>
+                <p class="views-time">129k - 1 day ago</p> 
+             </div>
+             </div>
+             
+       
+             </div>
+      
+            <div class="card">
+               <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+              <div class="card-body">
+               <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+             <div class="card-area">
+                <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+                <p class="name">Prem shahi</p>
+                <p class="views-time">129k - 1 day ago</p> 
+             </div>
+             </div>
+             
+       
+             </div>
+             
+             <div class="card">
+              <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+             <div class="card-body">
+              <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+            <div class="card-area">
+               <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+               <p class="name">Prem shahi</p>
+               <p class="views-time">129k - 1 day ago</p> 
+            </div>
+            </div>
+            
+      
+            </div>
+            
+            <div class="card">
+              <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+             <div class="card-body">
+              <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+            <div class="card-area">
+               <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+               <p class="name">Prem shahi</p>
+               <p class="views-time">129k - 1 day ago</p> 
+            </div>
+            </div>
+            
+      
+            </div>
+            
+          </div>
+
+        </div>
+      <!--Completed Card Ended-->
+      <!--Pending Card Started-->
+      <div class="pending-notes hide">
+        <div class="card-div">
+          <div class="card">
+             <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+            <div class="card-body">
+             <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+           <div class="card-area">
+              <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+              <p class="name">Prem shahi</p>
+              <p class="views-time">129k - 1 day ago</p> 
+           </div>
+           </div>
+           
+     
+           </div>
+    
+          <div class="card">
+             <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+            <div class="card-body">
+             <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+           <div class="card-area">
+              <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+              <p class="name">Prem shahi</p>
+              <p class="views-time">129k - 1 day ago</p> 
+           </div>
+           </div>
+           
+     
+           </div>
+           
+           <div class="card">
+            <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+           <div class="card-body">
+            <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+          <div class="card-area">
+             <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+             <p class="name">Prem shahi</p>
+             <p class="views-time">129k - 1 day ago</p> 
+          </div>
+          </div>
+          
+    
+          </div>
+          
+          <div class="card">
+            <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+           <div class="card-body">
+            <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+          <div class="card-area">
+             <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+             <p class="name">Prem shahi</p>
+             <p class="views-time">129k - 1 day ago</p> 
+          </div>
+          </div>
+          
+    
+          </div>
+        </div>
+          
+        </div>
+
+      </div>
+      <!--Pending card Ended-->
+      </div>
+      <!--Notes Card Ended-->
+      <!--Videos Card Started-->
+      <div class="videos hide">
+        <div class="completed-videos">
+          <div class="card-div">
+            <div class="card">
+               <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+              <div class="card-body">
+               <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+             <div class="card-area">
+                <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+                <p class="name">Prem shahi</p>
+                <p class="views-time">129k - 1 day ago</p> 
+             </div>
+             </div>
+             
+       
+             </div>
+      
+            <div class="card">
+               <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+              <div class="card-body">
+               <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+             <div class="card-area">
+                <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+                <p class="name">Prem shahi</p>
+                <p class="views-time">129k - 1 day ago</p> 
+             </div>
+             </div>
+             
+       
+             </div>
+             
+             <div class="card">
+              <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+             <div class="card-body">
+              <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+            <div class="card-area">
+               <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+               <p class="name">Prem shahi</p>
+               <p class="views-time">129k - 1 day ago</p> 
+            </div>
+            </div>
+            
+      
+            </div>
+            
+            <div class="card">
+              <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+             <div class="card-body">
+              <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+            <div class="card-area">
+               <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+               <p class="name">Prem shahi</p>
+               <p class="views-time">129k - 1 day ago</p> 
+            </div>
+            </div>
+            
+      
+            </div>
+            
+          </div>
+        </div>
+        <!--Completed Card Ended-->
+        <!--Pending Card Started-->
+        <div class="pending-videos hide">
+          <div class="card-div">
+            <div class="card">
+               <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+              <div class="card-body">
+               <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+             <div class="card-area">
+                <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+                <p class="name">Prem shahi</p>
+                <p class="views-time">129k - 1 day ago</p> 
+             </div>
+             </div>
+             
+       
+             </div>
+      
+            <div class="card">
+               <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+              <div class="card-body">
+               <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+             <div class="card-area">
+                <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+                <p class="name">Prem shahi</p>
+                <p class="views-time">129k - 1 day ago</p> 
+             </div>
+             </div>
+             
+       
+             </div>
+             
+             <div class="card">
+              <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+             <div class="card-body">
+              <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+            <div class="card-area">
+               <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+               <p class="name">Prem shahi</p>
+               <p class="views-time">129k - 1 day ago</p> 
+            </div>
+            </div>
+            
+      
+            </div>
+            
+            <div class="card">
+              <img src="{% static 'images/profile.jpg' %}" alt="" class="thumbnail">
+             <div class="card-body">
+              <img src="{% static 'images/profile.jpg' %}" alt="author" class="circle">
+            <div class="card-area">
+               <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+               <p class="name">Prem shahi</p>
+               <p class="views-time">129k - 1 day ago</p> 
+            </div>
+            </div>
+            
+      
+            </div>
+            
+          </div>
+        </div>
+        <!--Pending card Ended-->
+  
+      </div>
+      <!--Videos card Ended-->
+    </div>
+
+  </section>
+  <script src="{% static 'js/status.js' %}"></script>
+  <script src="{% static 'js/button.js' %}"></script>
+<script>
+								
+
+
+function toggle_menu(){
+  const menu = document.getElementById("menu_slot");
+  const pages = document.querySelector("body");
+  const menu_tab = document.querySelector("#menu_tab");
+  
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+    pages.style.overflow = "auto";
+    menu_tab.innerHTML = `<button id="nav_right" class="tab" onclick="toggle_menu()">
+																<span class="material-icons">menu</span>
+												</button>`;
+
+  } else {
+    menu.style.display = "block";
+    pages.style.overflow = "hidden";
+    menu_tab.innerHTML = `<button id="nav_right" class="tab" onclick="toggle_menu()">
+																<span class="material-icons" style="color: #FFF;">close</span>
+												</button>`;
+    
+  }
+}
+
+				</script>
+{% endblock body %}

@@ -1,0 +1,48 @@
+{% extends "navbar.html" %}
+{% block title %}Analytics {% endblock title %}
+{% load static %}
+{% block script %}
+  <link rel="stylesheet" href="{% static 'css/analytics.css' %}">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock script %}
+
+{% block body %}
+    <section class="home-section">
+        <h3 class="text">Analytics</h3>
+        <div class="chrt">
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+        <br>
+          <!--Comments started-->
+      <div class="comments">
+        <h4>Recent Comments</h4>
+        {% for post in recent.videocomment_set.all %}
+        <div class="comment-div"> 
+          <div class="comment-body">
+            {% if post.comment_vid_author.profile.image %}
+            <img src="{{post.comment_vid_author.profile.image.url}}" alt="profile" class="circle">
+            {% else %}
+            <img src="/Edutotop/Data/default.jpeg" alt="profile" class="circle">
+            {% endif %}
+            <div class="comment-details">
+              <h4>{{post.comment_vid_author}}&nbsp; &nbsp; <span class="time">{{post.comment_vid_commented_on}}</span></h4>
+              <p>{{post.comment_vid_message}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+                
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/analytics.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/config.js' %}"></script>
+    <script src="{% static 'js/comment.js' %}"></script>
+{% endblock body %}

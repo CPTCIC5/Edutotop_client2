@@ -1,0 +1,130 @@
+{% extends "navbar.html" %}
+{% block title %} We are here {% endblock title %}
+{% load static %}
+{% block script %}
+  <link rel="stylesheet" href="{% static 'css/open-video.css' %}">
+  
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock script %}
+
+{% block body %}
+{% if  messages %}
+   {% for msg in messages %}
+   <div class="msg-div" style="text-align: center;width:100%;padding: 10px;background-color: rgb(16, 173, 16);color:white;">
+	<p class="sc-msg">{{msg}}</p>
+   </div>
+ 
+   {% endfor %}
+{% endif %}
+<section class="home-section">
+  <div class="main-div">
+    <div class="screen-div">
+      <!--Screen Started-->
+      {% for fetch in qset4 %}
+      <div class="screen"> 
+        {% if fetch.vid_video %}
+        <video src="{{fetch.vid_video.url}}" controls class="notes"></video>
+        {% endif %}
+      </div>
+      <!--Screen end-->
+      <!--details started-->
+      <div class="details">
+        <div class="title">
+          <h4>{{fetch.vid_title}}</h4>
+          <div class="icons">
+            <p class="time-views">{{fetch.vid_views}} views - {{fetch.vid_published_on}}</p>
+            <div>
+              <i class='bx bx-like likes'><span>25k</span></i>
+              <i class='bx bx-dislike dislikes'><span>1k</span></i>
+              <i class='bx bx-dots-vertical-rounded'></i>
+            </div>
+            <div class="other-features hide">
+              <a href="{% url 'home:bag' %} " style="color:black;" ><i class="bx bx-bookmark">&nbsp;<span>Add to Bag</span> </i> </a>
+              <i class="bx bx-share-alt" style="border-bottom: 1px solid #11101d;margin: 5px;">&nbsp;<span>Share</span> </i>
+              {% if request.user == fetch.vid_author %}
+              <a href="{% url 'home:video-delete' fetch.id %}"  style="color: black;">
+                <span class="material-icons-outlined" style="font-size: 18px;">
+                delete
+                </span>
+                <span>Delete</span> 
+            </a>
+            {% endif %}
+            </div>
+        
+          </div>
+          
+        </div>
+              
+      </div>
+      <div class="description">
+        <div class="channel">
+          {% if fetch.vid_author.profile.image %}
+          <img src="{{fetch.vid_author.profile.image.url}}" alt="profile" class="circle">
+          {% else %}
+          <img src="/Data/default.jpeg" alt="profile" class="circle">
+          {% endif %}
+          <a href="{% url 'users:profile' fetch.vid_author.profile.id %}"  style="color: black; "><h4>{{fetch.vid_author}}</h4> </a>
+          <button class="btn-follow">Follow</button>
+        </div>
+        <p class="desc"> {{fetch.vid_desc}} </span> </p>
+      </div>
+      {% endfor %}
+      <!--Deatils end-->
+      <!--Comments started-->
+      <div class="comments">
+        <h4>Comments - <span class="Count"></span></h4>
+        {% if user.is_authenticated %}
+        <div class="do-comment">
+          {% if user.profile.image %}
+          <img src="{{user.profile.image.url}}" alt="profile" class="circle">
+          {% else %}
+          <img src="/Data/default.jpeg" alt="profile" class="circle">
+          {% endif %}
+          <form method="POST">
+            {% csrf_token %}
+          <input type="text" required name="comment_vid_message" placeholder="Add a Public Comment" class="comment-box">
+        </div>
+        {% endif %}
+        <div class="commentbtns hide">
+          <input type="submit" class="comment-btn" ></button>
+          <button class="comment-cancel-btn">Cancel</button>
+        </div>
+          </form>
+        {% for object in qset5.videocomment_set.all %}
+        <div class="comment-div">
+          <div class="comment-body">
+            {% if object.comment_vid_author.profile.image %}
+            <img src="{{object.comment_vid_author.profile.image.url}}" alt="profile" class="circle">
+            {% else %}
+            <img src="/Data/default.jpeg" alt="profile" class="circle">
+            {% endif %}
+            <div class="comment-details">
+              <a href="{% url 'users:profile' object.comment_vid_author.id  %} " style="color: black;"><h4>{{object.comment_vid_author}}&nbsp; &nbsp; <span class="time">{{object.comment_vid_commented_on}}</span></h4></a>
+              <p>{{object.comment_vid_message}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      <!--Comments End-->
+    </div>
+</div>
+    <!--Recommend notes-->
+    <div class="recommend-div">
+      <h4 class="reco">Lecture</h4>
+      <div class="card-div">
+      {% for fetch in qset5.vid_of.video_set.all %}
+      <a href="{% url 'home:video_paginated_view' fetch.vid_title %}" style="color: black;">
+        <div class="card-body">
+          <h4>{{fetch.vid_title}}</h4>
+      </a>
+        </div>  
+      {% endfor %}
+      </div>
+    </div>
+</section>
+<script src="{% static 'js/comment.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/likes.js' %}"></script>
+<script src="{% static 'js/video.js' %}"></script>
+{% endblock body %}

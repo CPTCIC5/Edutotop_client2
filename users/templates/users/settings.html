@@ -1,0 +1,30 @@
+{% extends "navbar.html" %}
+
+{% block title %}Settings {% endblock title %}
+{% load static %}
+{% block script %}<link rel="stylesheet" href="{% static 'css/settings.css' %}"> {% endblock script %}
+
+{% block  body %}
+    <section class="home-section">
+      <h3 class="text">Settings</h3>
+      <form action="" method="post">
+        <div class="setting-main">
+          <div class="setting-card">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Languages</span>
+                <select name="subject" class="inputs" required>
+                  <option value="english">English</option>
+                </select>
+              </div>
+           
+            <div>
+              
+            </div>
+
+          </div>
+        </div>
+       
+      </form>
+    </section>
+{% endblock body %}

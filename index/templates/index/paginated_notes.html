@@ -1,0 +1,150 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block title  %} Notes {% endblock title %}
+{% block script %}
+<link rel="stylesheet" href="{% static 'css/open-note.css' %}">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock script %}
+
+{% block body %}
+
+{% if  messages %}
+   {% for msg in messages %}
+   <div class="msg-div" style="text-align: center;width:100%;padding: 10px;background-color: rgb(16, 173, 16);color:white;">
+	<p class="sc-msg">{{msg}}</p>
+   </div>
+ 
+   {% endfor %}
+{% endif %}
+
+<section class="home-section">
+  <div class="main-div">
+    <div class="screen-div">
+      <!--Screen Started-->
+      <div class="screen">
+        {% for  paginated_notes in qset2  %}
+        {% if paginated_notes.thumbnail %}
+        <img src="{{paginated_notes.thumbnail.url}}" alt="note" class="notes">
+        {% else %}
+        <img src="/Data/default_notes.jpeg" alt="note" class="notes">
+        {% endif %}
+        <div class="features">
+          <a href="{% url 'home:bag' %}"><i class='bx bxs-bookmark'></i>
+            {% if paginated_notes.file %}
+          <a href download ="{{paginated_notes.file.url}}"><i class='bx bxs-download'></i></a>
+            {% endif %}
+          <i class='bx bxs-message-rounded-dots'></i>    
+          <i class='bx bxs-share-alt'></i>
+          {% if request.user == paginated_notes.author %}
+          <a href="{% url 'home:notes-delete' paginated_notes.title %}">
+            <i class='bx'>
+            <span class="material-icons-outlined" style="font-size:32px;">
+            delete
+            </span>
+          </i>
+        </a>
+          {% endif %}
+        </div>
+      </div>
+      <!--Screen end-->
+      <!--details started-->
+    
+      <div class="details">
+        <div class="title">
+          <h4>{{paginated_notes.title}}</h4>
+          <div class="icons">
+            <p class="time-views">{{paginated_notes.published_on}}</p>
+            <div>
+              <i class='bx bx-like likes'><span>25k</span></i>
+              <i class='bx bx-dislike dislikes'><span>1k</span></i>
+            </div>
+          </div>
+        </div>
+          
+          
+      </div>
+      <div class="description">
+        <div class="channel">
+          {% if paginated_notes.author.profile.image %}
+          <img src="{{paginated_notes.author.profile.image.url}}" alt="profile" class="circle">
+          {% else %}
+          <img src="/Data/default.jpeg" alt="profile" class="circle">
+          {% endif %}
+          <a href="{% url 'users:profile' paginated_notes.author.profile.id %} "  style="color: black; "><h4>{{paginated_notes.author}}</h4></a>
+          <button class="btn-follow">Follow</button>
+        </div>
+        <p class="desc"><span class="dot">{{paginated_notes.desc}}</span> </p>
+      </div>
+      {% endfor %}
+    <!--Deatils end-->
+      <!--Comments started-->
+      <div class="comments">
+        <h4>Comments<span class="Count"></span></h4>
+        {% if user.is_authenticated %}
+        <div class="do-comment">
+          {% if user.profile.image %}
+          <img src="{{user.profile.image.url}}" alt="profile" class="circle">
+          {% else %}
+          <img src="/Data/default.jpeg" alt="profile" class="circle">
+          {% endif %}
+        <form method="post">
+          {% csrf_token %}
+          <input type="text" name="message" required placeholder="Add a Public Comment" class="comment-box">
+        </div>
+        {% endif %}
+        <div class="commentbtns hide">
+          <input type="submit" class="comment-btn"></button>
+          <button class="comment-cancel-btn">Cancel</button>
+        </div>
+      </form>
+      {% for comment in qset3.notescomment_set.all %}
+      <div class="comment-div">
+        <div class="comment-body">
+          {% if comment.author.profile.image %}
+          <img src="{{comment.author.profile.image.url}}" alt="profile" class="circle">
+          {% else %}
+          <img src="/Data/default.jpeg" alt="profile" class="circle">
+          {% endif %}
+          <div class="comment-details">
+            <a href="{% url 'users:profile' comment.author.profile.id %} "  style="color: black; "><h4>{{comment.author}}&nbsp; &nbsp; </a><span class="time">{{comment.commented_on}}</span></h4>
+            <p>{{comment.message}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!--Comments End-->
+    </div>
+</div>
+    <!--Recommend notes-->
+    <div class="recommend-div">
+      <h4 class="reco">Recommended Notes</h4>
+      <div class="card-div">
+        {% for rec in recommend %}
+        <div class="card-body">
+          {% if rec.thumbnail %}
+          <img src="{{rec.thumbnail.url}}" alt="thumbnail" class="thumbnail" >
+          {% else %}
+          <img src="/Data/default_notes.jpeg" alt="thumbnail" class="thumbnail" >
+          {% endif %}
+          <div class="card-details">
+            {% if rec.author.profile.image %}
+            <img src="{{rec.author.profile.image.url}}" alt="profile" class="circle">
+            {% else %}
+            <img src="/Data/default.jpeg" alt="profile" class="circle">
+            {% endif %}
+            <div class="card-profile">
+              <h4 class="title">{{rec.title}}</h4>
+              <h4 class="name">{{rec.author}}</h4>
+            </div>
+            </div>                      
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<script src="{% static 'js/comment.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/likes.js' %}"></script>
+{% endblock body %}

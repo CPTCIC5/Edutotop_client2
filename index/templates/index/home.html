@@ -1,367 +1,198 @@
 {% extends "navbar.html" %}
-{% block title %} Edutotop-Home {% endblock title %}
 {% load static %}
-{% block script %} <link rel="stylesheet" href="{% static 'css/style2.css' %}">{% endblock script %}
-{% block body%}
+  {% block title %} Home  {% endblock title %}
+  {% block script %}
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+  <!-- Boxicons CDN Link -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   {% endblock script %}
+   {% block filter %} 
+   <div id="nav_bar">
+		<div class="nav_buttons">
+			<button id="nav_left" class="tab">
+				<span class="material-icons-outlined">
+					help
+				</span>
+			</button>
+		</div>
 
-<section class="home-section">
-  <div class="search"> 
-    <ul class="search-content">
-    <li>
-    <i class='bx bx-search'></i>
-    <input type="text" placeholder="Search...">
-  </li>
-</ul>
+		<div class="nav_buttons">
+			<button class="active tab">
+				<span class="material-icons-outlined">
+					youtube_searched_for
+				</span>
+			</button>
+		</div>
+
+		<div class="nav_buttons">
+			<button id="home_tab" class="tab">
+
+				<span class="material-icons-outlined" id="home_icon">
+					home
+				</span>
+
+			</button>
+		</div>
+
+		<div class="nav_buttons">
+			<button class="tab">
+				<span class="material-icons-outlined">
+					local_library
+				</span>
+			</button>
+		</div>
+
+		<div class="nav_buttons" id="menu_tab">
+			<button id="nav_right" class="tab" onclick="toggle_menu()">
+				<span class="material-icons">menu</span>
+			</button>
+		</div>
+	</div>
+
+  <div id="menu_slot">
+		<div id="menu_holder">
+			<div class="menu_options">
+				<button class="menu_redirects">
+					Help
+				</button>
+			</div>
+			<div class="menu_options">
+				<button class="menu_redirects">
+					Help
+				</button>
+			</div>
+			<div class="menu_options">
+				<button class="menu_redirects">
+					Help
+				</button>
+			</div>
+			<div class="menu_options">
+				<button class="menu_redirects">
+					Help
+				</button>
+			</div>
+			<div class="menu_options">
+				<button class="menu_redirects">
+					Help
+				</button>
+			</div>
+			<div class="menu_options">
+				<button class="menu_redirects">
+					Help
+				</button>
+			</div>
+			<div class="menu_options">
+				<button class="menu_redirects">
+					Help
+				</button>
+			</div>
+			<div class="menu_options">
+				<button class="menu_redirects">
+					over
+				</button>
+			</div>
+		</div>
+	</div>
+   {% endblock filter %}
+   {% block body %}
+
+
+   {% if  messages %}
+   {% for msg in messages %}
+   <div class="msg-div" style="text-align: center;width:100%;padding: 10px;background-color: rgb(16, 173, 16);color:white;">
+	<p class="sc-msg">{{msg}}</p>
+   </div>
+ 
+   {% endfor %}
+{% endif %}
+  <section class="home-section">
+   <div class="search"> 
+      <ul class="search-content">
+        <div class="search-div">
+      <i class='bx bx-filter-alt search-filter'></i>
+      <li>
+      <i class='bx bx-search'></i>
+	<form method="post" action="{%  %}">
+	  {% csrf_token %}
+      <input type="text" name="sea" placeholder="Search...">
+	</form>
+    </li>
+  </ul>
+  </div>
+
+  <div class="category-content hide"> 
+ <button class="btn-category active-category">All Subjects</button>
+ <button class="btn-category">Maths</button>
+ <button class="btn-category">Hindi</button>
+ <button class="btn-category">Social Science</button>
+ <button class="btn-category">Science</button>
+ <button class="btn-category">History</button>
+ <button class="btn-category">Geography</button>
 </div>
 
-<div class="category"> 
-  <ul class="category-content">
-  <li>
-  <a href="">
-    <span class="links_name">All Subjects</span>
-  </a>
-</li>
-<li>
-  <a href="">
-    <span class="links_name">Maths</span>
-  </a>
-</li>
-<li>
-  <a href="">
-    <span class="links_name">Science</span>
-  </a>
-</li>
-<li>
-  <a href="">
-    <span class="links_name">Social Science</span>
-  </a>
-</li>
-<li class="last">
-  <a href="">
-    <span class="links_name">Hindi</span>
-  </a>
-</li>
-</ul>
-</div>
-<div class="header">
-  <h2>Recommended</h2>
-</div>
-<div class="tabs">
-      <h5 class="links_name active"><span class="note active" >Notes</span></h5>
-      <h5 class="links_name"><span class="video" >Videos</span></h5>
-     
-      
-</div>
-<div id="notes" class="card-notes">
-  <div class="card-div">
-    <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
+  <div class="tabs">
+        <h5 class="links_name active"><span class="note active" >Notes</span></h5>
+        <h5 class="links_name"><span class="video" >Courses</span></h5>
        
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
+        
   </div>
-  <div class="card-div">
-    <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
+  <div id="notes" class="card-notes">
+    <div class="card-div">
+       {% for notes in qset1  %}
+	   <a  style="text-decoration: none; color:black"  href="{% url 'home:notes_paginated_view' notes.title %}">
+      <div class="card">
+		  {% if notes.thumbnail %}
+         <img src="{{notes.thumbnail.url}}" alt="" class="thumbnail">
+		  {% else %}
+		  <img src="/Data/default_notes.jpeg" alt="" class="thumbnail">
+		  {% endif %}
+        <div class="card-body">
+			{% if notes.author.profile.image %}
+         <img src="{{notes.author.profile.image.url}}" alt="author" class="circle">
+			{% else %}
+		 <img src="/Data/default.jpeg" alt="author" class="circle">
+		 {% endif %}
+       <div class="card-area">
+          <h5 class="title">{{notes.title}}</h5>
+          <p class="name">{{notes.author}}</p>
+       </div>
+		</a>
+       </div>
+       </div>
+       {% endfor %}
+    </div> 
   </div>
-  <div class="card-div">
-    <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
 
-     </div>
-   
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
+  <div id="videos" class="hide">
+    <div class="card-div">
+		{% for course in course_query  %}
+		<a  style="text-decoration: none; color:black"  href="{% url 'home:course_paginated_view' course.course_title %}">
+      <div class="card">
+		  {% if course.course_thumbnail %}
+        <img src="{{course.course_thumbnail.url}}" alt="" class="thumbnail">
+		  {% else %}
+		<img src="/Data/default_course.jpeg" alt="" class="thumbnail">
+			{% endif %}
+        <div class="card-body">
+			{% if course.course_author.profile.image %}
+        <img src="{{course.course_author.profile.image.url}}" alt="author" class="circle">
+			{% else %}
+		<img src="/Edutotop/Data/default.jpeg" alt="author" class="circle">
+		{% endif %}
+       <div class="card-area">
+          <h5 class="title">{{course.course_title}}</h5>
+          <p class="name">{{course.course_author}}</p>
+          <p class="views-time">{{course.course_published_on}}</p> 
+       </div>
+	</a>
+       </div>
+       </div>
+	   {% endfor %}
+    </div>
   </div>
-</div>
+  </section>
 
-<div id="videos" class="hide">
-  <div class="card-div">
-    <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">we are note here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">we are note here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">we are note here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">we are note here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-  </div>
-  <div class="card-div">
-    <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">we are note here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-  </div>
-  <div class="card-div">
-    <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-     <div class="card">
-       <img src="{%  static 'images/profile.jpg'  %}" alt="" class="thumbnail">
-      <div class="card-body">
-       
-       <img src="{%  static 'images/profile.jpg'  %}" alt="author" class="circle">
-       <h5 class="title">We are here</h5>
-     </div>
-       <p class="name">Prem shahi</p>
-       <p class="views-time">129k - 1 day ago</p> 
-     
-
-     </div>
-  </div>
-</div>
-
-<script src="{% static 'js/tab.js' %}"></script>
-<script src="{% static 'js/script.js' %}"></script>
-
-
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/tab.js' %}"></script>
 {% endblock body %}

@@ -4,9 +4,13 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Profile,Contact
-from django.core.exceptions import ValidationError
 from django.urls import reverse
 import datetime
+from django.contrib.auth import logout as auth_logout
+from .forms import ProfileForm
+
+def settings(request):
+    return render(request,'users/settings.html')
 
 def register(request):
     if request.method=='POST':
@@ -27,7 +31,6 @@ def register(request):
             else:
                 entry=User.objects.create_user(username=username,email=email,password=password)
                 entry.save()
-                messages.success(request,'Account Created!')
                 return HttpResponseRedirect(reverse('users:login'))
         else:
             messages.info(request,'Password and confirm password didn"t match')
@@ -50,26 +53,23 @@ def contact(request):
     return render(request,'users/contact.html')
 
 @login_required
-def profile(request):
-    queryset=Profile.objects.filter(user=request.user)
-    queryset2=User.objects.all()
+def profile(request,id):
+    queryset=Profile.objects.filter(user=id)
+    queryset2=Profile.objects.get(user=id)
     return render(request,'users/profile.html',{'queryset':queryset,'queryset2':queryset2})
 
+
 @login_required
-def profile_create(request): 
-    if request.method=='POST':
-        try:
-            user=request.user
-            image=request.FILES.get('image')
-            about=request.POST.get('about')
-        except ValidationError:
-            messages.error(request,'ADD IMG TYPE OF FILE')
-            return render(request,'profile_create.html')
-        if len(about)>200:
-            messages.info(request,'ABOUT IS TOO LONG')
-            return render(request,'index/profile_create.html')
-        data=Profile(user=user,image=image,about=about)
-        data.save()
-        messages.success(request,'Profile created')
+def profile_update(request,id):
+    queryset_update=Profile.objects.get(user=id)
+    form = ProfileForm(request.POST or None, instance = queryset_update)
+    if form.is_valid():
+        form.save()
         return HttpResponseRedirect(reverse('users:profile'))
-    return render(request,'users/profile_create.html')
+    return render(request,'users/profile_update.html',{'queryset_update':queryset_update,'form':form})
+
+
+def logout(request):
+    auth_logout(request)
+    messages.success(request,'Logout Successful')
+    return HttpResponseRedirect(reverse('home:index'))

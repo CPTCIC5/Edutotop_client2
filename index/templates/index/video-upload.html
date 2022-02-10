@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+   <title>Video</title>
+   {% load static %}
+    <link rel="stylesheet" href="{% static 'css/video-upload.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+   </head>
+<body>
+  <div class="container">
+    {% if  messages %}
+   {% for msg in messages %}
+   <div class="msg-div" style="text-align: center;width:100%;padding: 10px;background-color: rgb(16, 173, 16);color:white;">
+	<p class="sc-msg">{{msg}}</p>
+   </div>
+ 
+   {% endfor %}
+{% endif %}
+    <div class="title">Video</div>
+    <div class="content">
+      <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div class="user-details">
+        <div class="input-box">
+          <span class="details">Course</span>
+          <select name="vid_of" class="inputs" required>
+            {% for post in user.course_set.all %}
+            <option value="{{post.course_title}}" name="vid_of">{{post.course_title}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+            <div class="input-box">
+              <span class="details">Title</span>
+              <input type="text"  name="vid_title" class="inputs" placeholder="Enter the title" required>
+            </div>
+            
+            <div class="input-box">
+              <span class="details">Description</span>
+              <textarea  name="vid_desc" placeholder="Description" ></textarea>
+            </div>
+
+            <div class="input-box file-box">
+              <span class="details">Thumbnail</span>
+              <div class="dragarea">
+                <a class="browse"  onclick="clike()" style="border: 1px solid #11101d;border-radius: 4px;padding:6px;cursor: pointer;">Upload Thumbnail</a>
+                <input type="file" name="video_thumbnail" id="thumbnail"  accept="image/jpeg,image/png,image/jpg,image/svg"  hidden>
+              </div>
+             
+              </div>
+
+              <div class="input-box file-box">
+                <span class="details">Videos</span>
+                <div class="dragarea">
+                  <a class="browse"  onclick="clicke()" style="border: 1px solid #11101d;border-radius: 4px;padding:6px;cursor: pointer;">Upload Videos</a>
+                  <input type="file" name="vid_video" id="file" accept="video/mp4"  required hidden>
+                </div>
+                <p id="error" style="color: red;"></p>
+                </div>
+             
+            </div>
+          </div>
+       
+        <div class="button">
+          <input type="submit" value="Upload" id="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'js/browse-video.js '%}"></script>
+</body>
+</html>

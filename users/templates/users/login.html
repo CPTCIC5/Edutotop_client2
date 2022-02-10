@@ -1,6 +1,7 @@
 {% extends "auth_base.html" %}
 {% block title %}Login{% endblock title %}
 {% block body %}
+{% load socialaccount %}
 {% load crispy_forms_tags %}
 
                         <h3>Get more things done with Loggin platform.</h3>
@@ -12,7 +13,8 @@
                         {% else %}
                         <p>Access to the most powerfull tool in the entire design and web industry.</p>
                         {% endif %}
-                        
+
+                        <a href="{% provider_login_url 'google' %}">Login With Google</a>                        
                         <div class="page-links">
                             <a href="{% url 'users:login' %}" class="active">Login</a><a href="{% url 'users:register' %}">Register</a>
                         </div>

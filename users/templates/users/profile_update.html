@@ -1,0 +1,637 @@
+{% extends "navbar.html" %}
+{% block title %}  Profile | EdutoTop {% endblock title %}
+{% load static %}
+{% block script %}
+	<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock script %}
+
+{% block body %}
+<section class="home-section">
+
+	<div class="user-profile">
+
+		<div class="user-profile-details">
+
+			<div class="user-img-div">
+				<img src="profile1.jpg" alt="author" class="user-img" onclick="clike()" style="cursor: pointer;height: 170px;width: 170px;">
+				<input type="file" hidden class="file"> 
+			</div>
+
+			<div class="user-main-details">
+				<div class="user-details">
+					<input type="text" class="user-name" value="Prem Shahi" style="background-color: transparent; border:none; color:#fff; outline:none;" >
+				</div>
+				<div class="desc-details">
+					<textarea class="desc" style="background-color: transparent; border:none; color:#fff; outline:none;height: 60px;">Official handle of Prem Digital Media Private Ltd.
+					</textarea>
+				</div>
+				<div class="follow">
+					<p class="followers"><span>Followers</span><span>38k</span></p>
+					<p class="following"><span>Following</span><span>38</span></p>
+				</div>
+			
+			</div>
+			
+		</div>
+
+	</div>
+	
+	<div id="profile_tabs_bar">
+		<div>
+			<button class="profile_tab_btns tab_active" id="profile_tab_notes_btn">
+				Notes
+			</button>
+			
+		</div>
+		<div>
+			<button class="profile_tab_btns" id="profile_tab_videos_btn">
+				Courses
+			</button>
+			
+		</div>
+	</div>
+
+
+
+		<div id="notes" class="card-notes">
+			<div class="card-div">
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title" id="long">Lorem ipsum dolor sit note amet<span class="dot">...</span><span class="hide">consectetur</span>.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+		
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+			   
+			   <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			  <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			</div>
+		
+			<div class="card-div">
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+		
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+			   
+			   <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			  <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			</div>
+			
+			<div class="card-div">
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+		
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+			   
+			   <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			  <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			</div>
+			
+		  </div>
+		  <div id="videos" class="card-videos hide">
+			<div class="card-div">
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  	<h5 class="title">Lorem ipsum dolor sit course amet<span class="dot">...</span></h5>				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+		
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+			   
+			   <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			  <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			</div>
+		
+			<div class="card-div">
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+		
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+			   
+			   <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			  <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			</div>
+			
+			<div class="card-div">
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+		
+			  <div class="card">
+				 <img src="profile1.jpg" alt="" class="thumbnail">
+				<div class="card-body">
+				 <img src="profile1.jpg" alt="author" class="circle">
+			   <div class="card-area">
+				  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				  <p class="name">Prem shahi</p>
+				  <p class="views-time">129k - 1 day ago</p> 
+			   </div>
+			   </div>
+			   
+		 
+			   </div>
+			   
+			   <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			  <div class="card">
+				<img src="profile1.jpg" alt="" class="thumbnail">
+			   <div class="card-body">
+				<img src="profile1.jpg" alt="author" class="circle">
+			  <div class="card-area">
+				 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+				 <p class="name">Prem shahi</p>
+				 <p class="views-time">129k - 1 day ago</p> 
+			  </div>
+			  </div>
+			  
+		
+			  </div>
+			  
+			</div>
+			
+		  </div>
+				
+
+
+
+
+
+
+
+
+
+
+	<div id="videos" class="card-videos hide">
+		<div class="card-div">
+		  <div class="card">
+			 <img src="profile1.jpg" alt="" class="thumbnail">
+			<div class="card-body">
+			 <img src="profile1.jpg" alt="author" class="circle">
+		   <div class="card-area">
+			<h5 class="title">Lorem ipsum dolor sit course amet<span class="dot">...</span></h5>
+			  <p class="name">Prem shahi</p>
+			  <p class="views-time">129k - 1 day ago</p> 
+		   </div>
+		   </div>
+		   
+	 
+		   </div>
+	
+		  <div class="card">
+			 <img src="profile1.jpg" alt="" class="thumbnail">
+			<div class="card-body">
+			 <img src="profile1.jpg" alt="author" class="circle">
+		   <div class="card-area">
+			  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			  <p class="name">Prem shahi</p>
+			  <p class="views-time">129k - 1 day ago</p> 
+		   </div>
+		   </div>
+		   
+	 
+		   </div>
+		   
+		   <div class="card">
+			<img src="profile1.jpg" alt="" class="thumbnail">
+		   <div class="card-body">
+			<img src="profile1.jpg" alt="author" class="circle">
+		  <div class="card-area">
+			 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			 <p class="name">Prem shahi</p>
+			 <p class="views-time">129k - 1 day ago</p> 
+		  </div>
+		  </div>
+		  
+	
+		  </div>
+		  
+		  <div class="card">
+			<img src="profile1.jpg" alt="" class="thumbnail">
+		   <div class="card-body">
+			<img src="profile1.jpg" alt="author" class="circle">
+		  <div class="card-area">
+			 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			 <p class="name">Prem shahi</p>
+			 <p class="views-time">129k - 1 day ago</p> 
+		  </div>
+		  </div>
+		  
+	
+		  </div>
+		  
+		</div>
+	
+		<div class="card-div">
+		  <div class="card">
+			 <img src="profile1.jpg" alt="" class="thumbnail">
+			<div class="card-body">
+			 <img src="profile1.jpg" alt="author" class="circle">
+		   <div class="card-area">
+			  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			  <p class="name">Prem shahi</p>
+			  <p class="views-time">129k - 1 day ago</p> 
+		   </div>
+		   </div>
+		   
+	 
+		   </div>
+	
+		  <div class="card">
+			 <img src="profile1.jpg" alt="" class="thumbnail">
+			<div class="card-body">
+			 <img src="profile1.jpg" alt="author" class="circle">
+		   <div class="card-area">
+			  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			  <p class="name">Prem shahi</p>
+			  <p class="views-time">129k - 1 day ago</p> 
+		   </div>
+		   </div>
+		   
+	 
+		   </div>
+		   
+		   <div class="card">
+			<img src="profile1.jpg" alt="" class="thumbnail">
+		   <div class="card-body">
+			<img src="profile1.jpg" alt="author" class="circle">
+		  <div class="card-area">
+			 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			 <p class="name">Prem shahi</p>
+			 <p class="views-time">129k - 1 day ago</p> 
+		  </div>
+		  </div>
+		  
+	
+		  </div>
+		  
+		  <div class="card">
+			<img src="profile1.jpg" alt="" class="thumbnail">
+		   <div class="card-body">
+			<img src="profile1.jpg" alt="author" class="circle">
+		  <div class="card-area">
+			 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			 <p class="name">Prem shahi</p>
+			 <p class="views-time">129k - 1 day ago</p> 
+		  </div>
+		  </div>
+		  
+	
+		  </div>
+		  
+		</div>
+		
+		<div class="card-div">
+		  <div class="card">
+			 <img src="profile1.jpg" alt="" class="thumbnail">
+			<div class="card-body">
+			 <img src="profile1.jpg" alt="author" class="circle">
+		   <div class="card-area">
+			  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			  <p class="name">Prem shahi</p>
+			  <p class="views-time">129k - 1 day ago</p> 
+		   </div>
+		   </div>
+		   
+	 
+		   </div>
+	
+		  <div class="card">
+			 <img src="profile1.jpg" alt="" class="thumbnail">
+			<div class="card-body">
+			 <img src="profile1.jpg" alt="author" class="circle">
+		   <div class="card-area">
+			  <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			  <p class="name">Prem shahi</p>
+			  <p class="views-time">129k - 1 day ago</p> 
+		   </div>
+		   </div>
+		   
+	 
+		   </div>
+		   
+		   <div class="card">
+			<img src="profile1.jpg" alt="" class="thumbnail">
+		   <div class="card-body">
+			<img src="profile1.jpg" alt="author" class="circle">
+		  <div class="card-area">
+			 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			 <p class="name">Prem shahi</p>
+			 <p class="views-time">129k - 1 day ago</p> 
+		  </div>
+		  </div>
+		  
+	
+		  </div>
+		  
+		  <div class="card">
+			<img src="profile1.jpg" alt="" class="thumbnail">
+		   <div class="card-body">
+			<img src="profile1.jpg" alt="author" class="circle">
+		  <div class="card-area">
+			 <h5 class="title">Lorem ipsum dolor sit amet consectetur.</h5>
+			 <p class="name">Prem shahi</p>
+			 <p class="views-time">129k - 1 day ago</p> 
+		  </div>
+		  </div>
+		  
+	
+		  </div>
+		  
+		</div>
+		
+	  </div>
+</section>
+
+	
+<script src="{% static 'js/tab.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/profile.js' %}"></script>
+
+
+
+	<script>
+		function toggle_menu() {
+			const menu = document.getElementById("menu_slot");
+			const pages = document.querySelector("body");
+			const menu_tab = document.querySelector("#menu_tab");
+
+			if (menu.style.display === "block") {
+				menu.style.display = "none";
+				pages.style.overflow = "auto";
+				menu_tab.innerHTML = `<button id="nav_right" class="tab" onclick="toggle_menu()">
+																<span class="material-icons">menu</span>
+												</button>`;
+
+			} else {
+				menu.style.display = "block";
+				pages.style.overflow = "hidden";
+				menu_tab.innerHTML = `<button id="nav_right" class="tab" onclick="toggle_menu()">
+																<span class="material-icons" style="color: #FFF;">close</span>
+												</button>`;
+
+			}
+		}
+	</script>
+{% endblock body %}

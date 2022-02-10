@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+   <title>Course Upload</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/course-upload.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    </head>
+<body>
+  
+  <div class="container">
+    {% if  messages %}
+    {% for msg in messages %}
+    <div class="msg-div" style="text-align: center;width:100%;padding: 10px;background-color: rgb(16, 173, 16);color:white;">
+   <p class="sc-msg">{{msg}}</p>
+    </div>
+  
+    {% endfor %}
+  {% endif %}
+    <div class="title">Course</div>
+    <div class="content">
+      <form method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Title</span>
+              <input type="text" name="course_title" class="inputs" placeholder="Enter the title" required>
+            </div>
+            
+            <div class="input-box">
+              <span class="details">Description</span>
+              <textarea name="course_desc" placeholder="Description" required></textarea>
+            </div>
+           
+
+            <div class="input-box">
+              <span class="details">Subject</span>
+              <select name="course_subj" class="inputs" required>
+                <option value="Maths"  name="course_subj" >Maths</option>
+                <option value="Physics"  name="course_subj" >Physics</option>
+                <option value="Chemistry" name="course_subj" >Chemistry</option>
+              </select>
+            </div>
+            
+
+            <div class="input-box file-box">
+              <span class="details">Thumbnail</span>
+              <div class="dragarea">
+                <a class="browse"  onclick="clike()" style="border: 1px solid #11101d;border-radius: 4px;padding:6px;cursor: pointer;">Upload Thumbnail</a>
+                <input type="file" name="course_thumbnail" id="course_thumbnail" accept="image/jpeg,image/png,image/jpg,image/svg"  hidden>
+              </div>
+             
+              </div>
+
+            </div>
+          </div>
+       
+        <div class="button">
+          <input type="submit" value="Upload">
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="{% static 'js/course-upload.js' %}"></script>
+  <script src="{% static 'js/browse-course.js' %}"></script>
+</body>
+</html>
